@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>{% block titulo %}Formulario de Contacto {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1>Crear contacto</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <a href="/">CANCELAR</a>
+        <button type="submit">CREAR O EDITAR</button>
+    </form>
+    {% endblock cuerpo %}
+  </body>
+</html>

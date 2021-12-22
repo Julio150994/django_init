@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>{% block titulo %}Listado de Contactos {% endblock titulo %}</title>
+  </head>
+  <body>
+    {% block cuerpo %}
+    <h1>Template de listado</h1>
+
+    <a href="{% url 'crear_persona' %}" type="button">CREAR CONTACTO</a>
+    <br/><br/>
+
+    <table border="2" style="text-align: center;">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th colspan="2">OPCION</th>
+            </tr>
+        </thead>
+        <!-- Aplicamos el sistema de plantillas de Django -->
+        <tbody>
+            <!-- personas para el def inicio de views.py -->
+            {% for persona in object_list %}
+            <tr>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.apellido }}</td>
+                <td>{{ persona.correo }}</td>
+                <td><a href="{% url 'editar_persona' persona.id %}">EDITAR</a></td>
+                <td><a href="{% url 'eliminar_persona' persona.id %}">ELIMINAR</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock cuerpo %}
+  </body>
+</html>
